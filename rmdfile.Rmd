@@ -1,0 +1,85 @@
+---
+title: "Psych_Report_Format"
+author: "Sanjeev Neupane"
+date: "2026-01-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+#vector,function,concatinating vectors
+myvec <- 33
+myconcatvec <- c(2.3,2.6,-6.7,3.13,44/5,1e+03,myvec)
+myvec
+myconcatvec
+mynewvec <- c(myvec,myconcatvec)
+mynewvec
+#sequence
+3:34 #just directly write no need any functions or anything just : means sequence
+foo <- -5.3
+foonew <- foo:(-45.5+0.5)
+foonew
+#sequence with sequence
+seq(from=3,to=93,by=7)
+#evenly out sequence
+seq(from=3,to=4,length.out=40)
+#sequence with repetition
+rep(x=1,times=4)
+rep(x=c(3,6.8,32),times=3)
+rep(x=c(3,6.8,32),each=3)
+rep(x=c(4,5,32),times=3,each=4)
+foo<-4
+c(3,8.4,rep(x=32,times=foo),seq(from=-2,to=1,length.out=foo+1))
+#sorting with sort
+FOO <- c(-3,04,34,-2.01,-2,03)
+sort(FOO,decreasing=TRUE)
+#finding a vector length with length
+veclen <- c(4,2,23,534,2.3)
+length(veclen)
+##excercise practice
+five_to_eleven<- seq(from=5,to=-11,by=-0.3)
+five_to_eleven
+sort(five_to_eleven,decreasing=FALSE)
+rev(five_to_eleven)
+vec_c <- c(-1,3,-5,7,-9)
+store_vec_c <- c(rep(vec_c,times=2,each=10))
+show_store_vec_c <- sort(store_vec_c,decreasing=TRUE)
+show_store_vec_c
+length(show_store_vec_c)
+#create and store a vecotr 
+any_config_vec <- c(seq(from=6,to=12,by=1),rep(5.3,times=3),-3,seq(from=102,
+                    to=length(show_store_vec_c),length.out=9))
+any_config_vec
+length(any_config_vec)
+any_config_vec[1]
+any_config_vec[20]
+any_config_vec[13]
+my_len_vec <- any_config_vec[length(veclen)]
+my_len_vec
+bar <- any_config_vec[my_len_vec-1]
+bar
+1:bar
+rev <- any_config_vec[-(my_len_vec-1)]
+rev
+length(rev)
+list_vec <- any_config_vec[2:8]
+list_vec
+mean(any_config_vec)
+sd(any_config_vec)
+
+
+```
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
