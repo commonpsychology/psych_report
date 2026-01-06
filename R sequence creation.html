@@ -1,0 +1,132 @@
+---
+title: "psych_report_format"
+author: "sanjeev_neupane"
+date: "2026-01-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+# For plotting and data manipulation
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+# Basic descriptive stats
+
+summary(data)
+
+# Grouped summary
+
+data %>%
+group_by(group) %>%
+summarise(
+mean_stress = mean(stress_score),
+sd_stress = sd(stress_score),
+mean_coping = mean(coping_score),
+sd_coping = sd(coping_score)
+)
+
+# Simulating psychological data
+
+set.seed(123)
+data <- data.frame(
+participant = 1:50,
+age = round(rnorm(50, mean = 25, sd = 4)),  # Age of participants
+stress_score = round(rnorm(50, mean = 50, sd = 10)), # Stress scale
+coping_score = round(rnorm(50, mean = 30, sd = 5)),  # Coping scale
+group = sample(c("Control", "Experimental"), 50, replace = TRUE)
+)
+
+head(data)
+
+hist(data$stress_score,
+breaks = 10,
+col = "skyblue",
+main = "Histogram of Stress Scores",
+xlab = "Stress Score")
+
+boxplot(stress_score ~ group, data = data,
+col = c("pink","lightgreen"),
+main = "Stress Score by Group",
+ylab = "Stress Score")
+
+plot(data$coping_score, data$stress_score,
+pch = 19,
+col = ifelse(data$group == "Control", "blue", "red"),
+main = "Stress vs Coping",
+xlab = "Coping Score",
+ylab = "Stress Score")
+legend("topright", legend = c("Control", "Experimental"),
+col = c("blue", "red"), pch = 19)
+
+ggplot(data, aes(x = stress_score, fill = group)) +
+geom_histogram(binwidth = 5, alpha = 0.7, position = "dodge") +
+theme_minimal() +
+labs(title = "Stress Score Distribution by Group",
+x = "Stress Score",
+y = "Count")
+
+ggplot(data, aes(x = group, y = stress_score, fill = group)) +
+geom_boxplot(alpha = 0.7) +
+theme_minimal() +
+labs(title = "Stress Score by Group",
+x = "Group",
+y = "Stress Score")
+
+ggplot(data, aes(x = coping_score, y = stress_score, color = group)) +
+geom_point(size = 3, alpha = 0.8) +
+geom_smooth(method = "lm", se = FALSE) +
+theme_minimal() +
+labs(title = "Stress vs Coping by Group",
+x = "Coping Score",
+y = "Stress Score")
+
+# Save ggplot2 scatter plot
+
+p <- ggplot(data, aes(x = coping_score, y = stress_score, color = group)) +
+geom_point(size = 3, alpha = 0.8) +
+geom_smooth(method = "lm", se = FALSE) +
+theme_minimal()
+
+ggsave("stress_vs_coping.png", plot = p, width = 6, height = 4)
+
+# Create a new variable: stress level category
+
+data <- data %>%
+mutate(stress_level = case_when(
+stress_score < 40 ~ "Low",
+stress_score >= 40 & stress_score < 60 ~ "Medium",
+stress_score >= 60 ~ "High"
+))
+
+table(data$stress_level)
+
+library(knitr)
+data %>%
+group_by(group, stress_level) %>%
+summarise(count = n()) %>%
+kable(caption = "Count of Participants by Group and Stress Level")
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
