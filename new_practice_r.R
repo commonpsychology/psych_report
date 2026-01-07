@@ -1,4 +1,10 @@
-#vector,function,concatinating vectors
+#install.packages("packagenaem)
+#install.packages(c("package1","package2"))
+#library(package name)
+#installed.packages()
+#update.packages()
+#remove.packages("packages name")
+#vector,function,concatenating vectors
 myvec <- 33
 myconcatvec <- c(2.3,2.6,-6.7,3.13,44/5,1e+03,myvec)
 myvec
@@ -119,3 +125,90 @@ sqrt(c_vec_final[5])
 log(c_vec_final[5])
 log(log(c_vec_final[5]))
 ##73 matrices and array
+#matrix(data=,nrow=,ncol=) syntax for matrix
+A_matrix <- matrix(data = c(2,-1,3,5),ncol=1,nrow=4)
+A_matrix
+#byrow=TRUE , fills the matrix element one by one in the direction of row 11 12 21 22
+D_matrix <- matrix(data = c(2,-1,3,5,4,5,7,7),ncol=2,nrow=4,byrow=TRUE)
+D_matrix
+#row and column binding listing in one direction of row or column
+mymat<-rbind(1:5,4:8)
+my_mat<- cbind(2:4,3:5,7:9) #or cbind(c(2,3,4),c(3,4,5),c(7,8,9))
+dim(my_mat)
+nrow(my_mat)
+ncol(my_mat)
+dim(my_mat)[2][1]
+dim(mymat)
+dim(mymat)[1]
+dim(mymat)[2]
+mymat
+mymat[2,4]
+mymat[2,5]
+mymat[1,4]
+mymat[1,]
+mymat[,2]
+#diag-diagonal of a matrix
+diag(mymat)
+diag(my_mat)
+mymat[,-3]
+mymat[-2,-2]
+mymat[-1,-c(3:4)]#first row gogne, 3 and 4 th column gone
+b_mymat<- mymat
+b_mymat
+b_mymat[1,]<- c(93,33,49,07,21)
+b_mymat
+b_mymat[c(1,2),3]<- 13
+b_mymat
+b_mymat[,3]<-b_mymat[,1]
+b_mymat
+diag(b_mymat)<-rep(x=0)
+b_mymat
+#excercise
+a_matrix <- matrix(data=c(4.3,3.1,8.2,8.2,3.2,0.9,1.6,6.5),ncol=2,nrow=4,byrow=TRUE)
+dim(a_matrix)
+a_matrix <- a_matrix[-2,]
+dim(a_matrix)
+a_matrix
+a_matrix[c(1:3),2]<- sort(a_matrix[,2],decreasing = FALSE)
+a_matrix
+new_return <- matrix(a_matrix[-4,-1],ncol=1)
+new_return
+dim(new_return)
+new_bottom_four <-new_return[,1]
+new_bottom_four
+new_tbt_matrix <- matrix(new_bottom_four,ncol=3,nrow=1,byrow = TRUE)
+new_tbt_matrix
+#matrix ma halnu vanda aagadi vector ma halda will be beneficial 
+#vals<- -0.5*diag(matrix)
+new_bottom_four
+new_tbt_matrix
+t(new_tbt_matrix)#t(for transpose of the matrix)
+i_matrix <- diag(x=4)
+i_matrix 
+#scalar multiple of matrix just a*A
+i_matrix*c(2)
+#matrix operation of addition and substraction SIMPLY: A+B AND A-B
+#MATRIX MULTIPLICATION A%*%B IS NOT EQUEAL TO B%*%A
+#SOLVE(A) CALCULATES THE INVESRION OF MATRIX AND A%*%SOLVE(A)=I IDENTITY MATRIX
+#MULTIDIMENSIONAL ARRAY
+multi_dim_array <- array(data=1:24,dim=c(3,4,4))
+multi_dim_array
+#excercises
+arr<- array(seq(from=4.8,to=0.1,length.out=48),dim=c(4,2,6))
+new_arr<- arr[c(4,1),2,]
+new_arr
+four_cold_rep <- array(c(rep(new_arr[2,]),rep=4),dim=c(2,2,2,3))
+four_cold_rep
+del_sixth_layer<- arr[,,-6]
+del_sixth_layer
+del_sixth_layer[c(2,4),2,c(1,3,5)]<-c(-99)
+del_sixth_layer
+#in a grandscheme of thing 42 days to complete this book 20 pages a day is like infinite short
+#go nice and easy one concpet  a day or like very slowly took 23 years to reach here
+#will take atleast 3-4 years tapaswi hune for that time in both reading writing
+#skills generation patience in market life psychology speaking gym yoga writing 
+#and whatever your goal is with discipline and consistency magic happens whatever you do.
+#repetative use of it daily books reading,writing,knowledge gaining,articulation,stocks
+#r practice everything and no karma or work is small can do anything nothing matters.
+#consistent discipline flow for life
+#go out work flow do whatever you want to do as 432 without thinking randomness you like
