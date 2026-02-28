@@ -1009,6 +1009,81 @@ ggplot(df,aes(x=Weight,y=Height,color=Sex, size=9,shape=Sex))+
   labs(title="Height vs Weight by Sex",
       x="Weight (kg)",
       y="Height (cm)")+theme_minimal()
+
+
+#Sys.Date() function
+
+#READING FILES IN R
+data()
+
+data("sleep")
+library(help="iris")
+
+#THORAI GARNE TARA RAMRO EFFICINET TIME DIYERA STEADY BUILDUP GARNE.
+ChickWeight[1:15,]
+
+library(help="tseries")
+data(ice.river)
+
+#psychology data sets practice
+install.packages("readxl")
+library(readxl)
+ei_data<- read_excel("D:/Downloads/Emotional Intelligence Data.xlsx")
+ei_data
+
+head(ei_data)
+ei_data[1:5,]
+
+ei_data[10]
+
+#excel_sheets() for the sheets listing sheet names
+# for reading specific sheet data<- read_excel(file path, sheet = "sheet n")
+
+mydata_file<- read.table(file="D:/User/Documents/mydatafile.txt",header=TRUE,sep=" ",na.strings="*",stringsAsFactors=FALSE)
+mydata_file
+file.choose()
+mydata_filen<- read.table(file=file.choose(),header=TRUE,sep=" ",na.strings="*",stringsAsFactors=FALSE)
+mydata_filen
+spread<- read.csv(file.choose(),header=FALSE,stringsAsFactors = TRUE)
+spread
+
+dia.url <- "http://www.amstat.org/publications/jse/v9n2/4cdata.txt"
+diamond<- read.table(dia.url)
+diamond
+#names() provides the labels to headers and all.
+
+#writing out data files
+write.table(x=mydata_filen,file=file.choose(),sep="@",na="??",quote=FALSE,row.names=FALSE)
+
+
+#DRAWING GRAPH IN FILE DIRECTLY
+jpeg(filename ="D:/Coding and Practice/Psychology/myjpegplot.jpeg",width=600,height=600)
+plot(1:5,6:10,ylab = "a nice ylab",xlab = "here's an xlab",main="a saved .jpeg plot")
+points(1:5,10:6,cex=4,pch=6,col=4)
+dev.off()
+
+foo<- c(1,1,2,3,5,3,9,4,2)
+bar<-c(2,2,2,-1,3,4,0,0,2)
+install.packages("ggplot2")
+library(ggplot2)
+qplot(foo,bar,geom="blank")+geom_point(size=3,shape=8,color="darkgreen")+geom_line(color="orange",linetype=4)
+#ggsave for ggplot
+ggsave(filename="D:/Coding and Practice/Psychology/mygggplot.png")
+
+#ad hoc object read/write operations
+somelist <- list(foo=c(5,2,45),
+                 bar=matrix(data=c(T,T,F,F,F,F,T,F,T),nrow=3,ncol=3),
+                 baz=factor(c(1,2,2,3,1,1,3),levels=1:3,ordered=T))
+somelist
+
+dput(x=somelist,file="D:/Coding and Practice/Psychology/dputfile.txt")
+
+#getting the file that had just been inserted
+newobject<- dget(file="D:/Coding and Practice/Psychology/dputfile.txt")
+newobject
+list.files(file.choose())
+
+
 #results factor level index like 0=1, 1=2,2=3
 #KEI NASOCHI KANA KEI NAHERI OR ANALYZE GARI KANA FLOW AND HARDWORK
 #I DONT CARE WHAT OTHERS DO AND SAY JUST 432 FLOW I DONT COMMAND OR ADVICE OTHERS CHANGE OTEHRS
